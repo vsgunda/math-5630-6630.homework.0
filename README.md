@@ -1,4 +1,4 @@
-# Coding Assignment 0: Prerequisites
+# Programming Assignment 0: Prerequisites
 
 Problems can be found on Canvas.
 
