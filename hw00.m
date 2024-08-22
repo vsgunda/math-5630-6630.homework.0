@@ -24,7 +24,7 @@ classdef hw00
 
         function det_A = p2(A)
             % This function takes a matrix A of size n x n and returns the determinant of A.
-            % :param A: a numpy matrix of size n x n
+            % :param A: a matrix of size n x n
             % :return: the determinant of A
 
             if size(A,1) ~= size(A,2)
