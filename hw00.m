@@ -1,44 +1,59 @@
-% Author: Your Name / your_email
-% Date: 2024-09-01
+% Author: Vishnu Gunda / vsg0005@auburn.edu
+% Date: 2024-09-04
 % Assignment Name: hw00
-
-% The following class defines 3 functions for each problem respectively.
-% Please follow the instruction inside each function. 
 
 classdef hw00 
     methods (Static)
 
-        function a_m = p1(m)
-            % This function takes an integer m and returns the term a_m in the sequence defined by 
-            % a_0 = 0, a_1 = 1, a_2 = 1, and a_n = a_{n-1} + a_{n-2} + a_{n-3} for n >= 3.
-            % :param m: an integer
-            % :return: the m-th term in the sequence
+        function a_m = p1(m)            
+            a_m = 0; % This is the answer to the sequence at the given index. 0 is a placeholder
 
             if m < 0
-                error('m must be a non-negative integer')
-            else 
-                a_m = inf; % Write your code here
+                fprintf("index out of bounds\n");
+            elseif m == 0
+                a_m = 0; % a_0 = 0
+                fprintf("The answer is %d\n", a_m);
+            elseif m == 1
+                a_m = 1; % a_1 = 1
+                fprintf("The answer is %d\n", a_m);
+            elseif m == 2
+                a_m = 1; % a_2 = 1
+                fprintf("The answer is %d\n", a_m);
+            else
+                a_n_minus_2 = 0; % a_0
+                a_n_minus_1 = 1; % a_1
+                a_n = 1;         % a_2
+                
+                for n = 3:m
+                    a_m = a_n + a_n_minus_1 + a_n_minus_2;
+                    a_n_minus_2 = a_n_minus_1;
+                    a_n_minus_1 = a_n;
+                    a_n = a_m;
+                end
+                fprintf("The answer is %d\n", a_m);
             end
-
         end
 
         function det_A = p2(A)
-            % This function takes a matrix A of size n x n and returns the determinant of A.
-            % :param A: a matrix of size n x n
-            % :return: the determinant of A
-
-            if size(A,1) ~= size(A,2)
-                error('A must be a square matrix')
+            [~, n] = size(A);
+            if n == 1
+                det_A = A;
+            elseif n == 2
+                det_A = A(1,1)*A(2,2) - A(1,2)*A(2,1);
             else
-                det_A = inf;% Write your code here, note when you call p2 function inside your function, you need to call it like this: hw00.p2(B), where B is a matrix.
+                det_A = 0;
+                for j = 1:n
+                    B = A;
+                    B(:,j) = [];
+                    det_A = det_A + (-1)^(1+j) * A(1,j) * p2(B);
+                end
             end
         end
 
         function p3()
-            % This function should have a run time about 1 second.
-            % :return: no returns
-
-            % Write your code here
+            tic;
+            pause(0.99995);
+            toc;
         end
     end
 end
