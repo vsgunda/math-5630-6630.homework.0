@@ -45,7 +45,7 @@ classdef hw00
                 for j = 1:n
                     B = A;
                     B(:,j) = [];
-                    det_A = det_A + (-1)^(1+j) * A(1,j) * p2(B);
+                    det_A = det_A + (-1)^(1+j) * A(1,j) * hw00.p2(B);
                 end
             end
         end
